@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  v2rayn:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: v2rayn
+    restart: unless-stopped
+    volumes:
+      # 配置持久化存储
+      - ./config:/config
+      # 如果需要使用自定义核心文件，可以取消注释以下行
+      # - ./custom_cores:/app/bin
+    ports:
+      # SOCKS代理端口
+      - "10808:10808"
+      # HTTP代理端口
+      - "10809:10809"
+      # 如果需要暴露其他端口，可以在这里添加
+      # - "10000:10000"  # 自定义端口
+    environment:
+      - DISPLAY=${DISPLAY}  # 用于GUI显示（如果需要）
+      - ENABLE_TUN=false    # 是否启用TUN模式，true或false
+      # - LANG=zh_CN.UTF-8  # 设置语言环境
+      # - TZ=Asia/Shanghai  # 设置时区
+    # 如果需要在容器中使用TUN模式，需要取消注释以下特权设置
+    # privileged: true
+    # cap_add:
+    #   - NET_ADMIN
+    #   - SYS_MODULE
+    # 如果需要使用主机网络模式，可以取消注释以下行
+    # network_mode: "host"

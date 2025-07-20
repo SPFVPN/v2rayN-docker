@@ -1,0 +1,34 @@
+# 版本控制
+.git
+.github
+.gitignore
+.gitattributes
+
+# 构建输出
+v2rayN/bin
+v2rayN/obj
+v2rayN/*/bin
+v2rayN/*/obj
+
+# 发布文件
+v2rayN/Release
+
+# 临时文件
+*.tmp
+*.log
+
+# Docker相关
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# 文档
+*.md
+LICENSE
+
+# 其他不需要的文件
+*.zip
+*.gz
+*.tar
+*.deb
+*.AppImage
